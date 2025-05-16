@@ -43,7 +43,7 @@ public class ItemController {
     public Item create(@RequestBody @Valid Item item) {
         var personagem = gb.getPersonagem(item.getDono().getId());
         item.setDono(personagem);
-        personagem.setItens(item);
+        personagem.setItens((List<Item>) item);
         return repository.save(item);
     }
 

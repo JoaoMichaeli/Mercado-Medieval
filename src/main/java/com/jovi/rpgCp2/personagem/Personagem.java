@@ -6,8 +6,10 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Range;
 
 import java.math.BigDecimal;
@@ -16,6 +18,8 @@ import java.util.List;
 @Data
 @Builder
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Personagem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,61 +42,4 @@ public class Personagem {
     @JsonIgnoreProperties("dono")
     private List<Item> itens;
 
-    public Personagem( String nome, Classe classe, Integer nivel, BigDecimal moedas){
-        this.nome = nome;
-        this.classe = classe;
-        this.nivel = nivel;
-        this.moedas = moedas;
-    }
-
-    public Personagem() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Classe getClasse() {
-        return classe;
-    }
-
-    public void setClasse(Classe classe) {
-        this.classe = classe;
-    }
-
-    public Integer getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(Integer nivel) {
-        this.nivel = nivel;
-    }
-
-    public BigDecimal getMoedas() {
-        return moedas;
-    }
-
-    public void setMoedas(BigDecimal moedas) {
-        this.moedas = moedas;
-    }
-
-    public List<Item> getItens() {
-        return itens;
-    }
-
-    public void setItens(Item itens) {
-        this.itens.add(itens);
-    }
 }
